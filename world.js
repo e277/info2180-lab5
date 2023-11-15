@@ -1,13 +1,7 @@
 $(document).ready(function () {
     $("#lookup").click(function (event) {
         event.preventDefault();
-
-        const country = $("#country").val();
-
-        // if (country === "") {
-        //     alert("Please enter a country");
-        //     return;
-        // }
+        const country = encodeURIComponent($("#country").val());
 
         $.ajax({
             type: "GET",
@@ -19,7 +13,22 @@ $(document).ready(function () {
                 console.log("[ERROR]: ", error);
             }
         });
+    });
 
-
+    $("#cities").click(function (event) {
+        event.preventDefault();
+        const country = encodeURIComponent($("#country").val());
+        const cities = true;
+        
+        $.ajax({
+            type: "GET",
+            url: "world.php?country=" + country + "&lookup=" + cities,
+            success: (response2) => {
+                $("#result").html(response2);
+            },
+            error: (error) => {
+                console.log("[ERROR]: ", error);
+            }
+        });
     });
 });
