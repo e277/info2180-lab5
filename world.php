@@ -93,7 +93,7 @@ try {
         $lookup = false;
 
     } else {
-        echo 'No results found';
+        echo '<p style="color: red; font-weight: bold;">Enter Country to see cities!!!</p>';
     }
 
 } catch (PDOException $e) {
